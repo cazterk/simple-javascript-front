@@ -14,12 +14,14 @@ async function getArticles() {
   const cleanedData = Object.keys(data).map((key) => data[key]);
   const articles = cleanedData[2];
 
-  let mappedArticles = articles.map((article, index) => {
-    return `<div class="article" key=${index}>
+  let mappedArticles = articles
+    .map((article, index) => {
+      return `<div class="article" key=${index}>
     <h2>${article.title}</h2>
     <p>${article.body}</p>
     </div>`;
-  });
+    })
+    .join("");
 
   container.innerHTML = mappedArticles;
 }
